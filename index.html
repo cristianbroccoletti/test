@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save the Date</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f8f9fa;
+      color: #343a40;
+    }
+    .hero {
+      background: url('sfondo.jpg') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.5rem;
+    }
+    .countdown {
+      font-size: 2rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .details {
+      padding: 2rem 0;
+      background-color: #fff;
+      text-align: center;
+    }
+    .details h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .details p {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <h1>Save the Date</h1>
+      <p>We're getting married on</p>
+      <p class="fw-bold fs-2">May 25, 2025</p>
+      <div id="countdown" class="countdown">Loading...</div>
+      <p>More details to follow soon!</p>
+    </div>
+  </section>
+
+  <!-- Details Section -->
+  <section class="details">
+    <div class="container">
+      <h2>Mark Your Calendars!</h2>
+      <p>Join us in celebrating our special day.</p>
+      <p>Location: <strong>Villa Paradiso, Lake Como</strong></p>
+      <p>Time: <strong>4:00 PM</strong></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-3 bg-light">
+    <p>&copy; 2025 John & Jane</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Countdown logic
+    const weddingDate = new Date('2025-05-25T16:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerText = 'The big day has arrived!';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown').innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Update the countdown every second
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initialize immediately
+  </script>
+</body>
+</html>
